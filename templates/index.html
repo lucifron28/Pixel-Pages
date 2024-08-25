@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} PixelPages: Online Ebook Library {% endblock %}
+
+{% block ClassBody %} main-page {% endblock %}
+
+{% block header %}
+    <nav>
+        <div class="logo-title">
+            <img src="../static/logo.jpg" alt="logo" class="logo">
+            <h1>Pixel Pages</h1>
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Browse Books</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <h2>Welcome to Pixel Pages Ebook Library!</h2>
+
+    <p>Discover a world of knowledge and imagination at your fingertips! Our ebook library offers a diverse collection of books across various genres. Whether you're looking for the latest bestsellers, timeless classics, or something entirely new, you're in the right place.</p>
+
+    <div class="ebook-reader">
+        <div class="navigation">
+            <button id="prev-chapter">Previous</button>
+            <button id="next-chapter">Next</button>
+        </div>
+        <div id="content" class="chapter">
+            <!-- Chapter content will be loaded here -->
+        </div>
+    </div>
+    <script>
+        let currentChapter = {{ last_read_chapter }};
+        const totalChapters = {{ chapters }};
+    </script>
+
+    <!-- Include the JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+{% endblock %}

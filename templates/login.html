@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block header %} {% endblock %}
+
+{% block ClassBody %} login-body {% endblock %}
+    {% block main %}
+
+        <form action="/"">
+            <h2>Login</h2>
+            <div class="inputBox">
+                <input type="text" required>
+                <span>Username</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" required>
+                <span>Password</span>
+            </div>
+            <div class="buttons">
+                <button type="submit">Login</button>
+                <button type="submit">Sign-up</button>
+            </div>
+        </form>
+    {% endblock %}
+</div>

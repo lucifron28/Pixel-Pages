@@ -1,0 +1,230 @@
+.inputBox {
+    position: relative;
+    display: flex;
+    margin: 20px; /* Added some margin for spacing */
+}
+
+.inputBox input {
+    width: 100%; /* Make input take full width */
+    padding: 15px 20px;
+    outline: none;
+    background: transparent;
+    border: 3px solid;
+    border-image: linear-gradient(to right, black, rgb(33, 22, 1), orange) 1;
+    color: #fff;
+    font-size: 1em;
+    transition: 0.4s cubic-bezier(0.05, 0.81, 0, 0.93);
+    justify-content: center;
+}
+
+.inputBox span {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
+    color: #fff;
+    pointer-events: none;
+    transition: 0.4s;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.inputBox input:focus ~ span, 
+.inputBox input:valid ~ span {
+    top: 0px; /* Move the label to the top */
+    left: 10px; /* Adjust the label to the left */
+    font-size: 0.7em;
+    transform: translateY(-50%); /* Move label above the input field */
+    padding: 0 5px;
+    border-radius: 2px;
+    background: #212121;
+    letter-spacing: 0em;
+    border: 1px solid #ee8456;
+    text-shadow: none;
+}
+
+.login-body {
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+form {
+    display: block;
+    justify-items: center; 
+    align-items: center; 
+    gap: 20px; 
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(to right, black, rgb(33, 22, 1), orange) 1;
+    width: 300px;
+    height: 250px;
+    padding: 25px;
+    text-align: center;
+    text-shadow: 3px 3px black;
+    box-shadow: 0px -25px 20px -20px rgba(0,0,0,0.45),
+    25px 0px 20px -20px rgba(0,0,0,0.45),
+    0px 25px 20px -20px rgba(0,0,0,0.45),
+    -25px 0px 20px -20px rgba(0,0,0,0.45);
+}
+
+form .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+form button {
+    width: 30%; /* Adjust width if needed */
+    border-radius: 10%;
+    background-image: linear-gradient(to right, black, rgb(33, 22, 1), orange);
+    color: white;
+    text-align: center; /* Center text inside the button */
+    padding: 5px; /* Optional: add padding for aesthetics */
+    margin: 0 auto;
+    border: 3px solid black;
+}
+form h2 {
+    display: inline;
+    color: #ee8456;
+}
+
+form button:hover {
+    transform: scale(1.2);
+}
+
+.main-page {
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+header {
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+
+nav {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+nav li {
+    list-style: none;
+    margin-right: 15px; 
+    display: inline-block;
+}
+
+nav ul {
+    display: inline-flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover, nav a:focus {
+    background-color: rgba(0, 0, 0, 0.716);
+    padding: 5px;
+    border-radius: 10%;
+}
+
+nav a:active {
+    color: black;
+}
+
+.logo {
+    display: inline-flex;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.logo-title {
+    display: inline-flex;
+}
+
+.logo-title h1 {
+    margin-left: 10px;
+}
+
+/* Styles for the ebook reader */
+.ebook-reader {
+    max-width: 800px;  /* Adjust the width to resemble a book */
+    margin: 20px auto;  /* Center the reader */
+    padding: 30px 40px;  /* Padding to give space around text */
+    border: 3px solid #452B0C;  /* Light border to resemble book edge */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+    background-color: #E5B171;  /* Light background color for a book feel */
+    line-height: 1.6;  /* Improve readability */
+    font-family: Georgia, 'Times New Roman', Times, serif;  /* Book-like font */
+    /* overflow-y: auto; */
+    height: 90vh;  /* Fixed height for better handling of long content */
+    color: black;
+    position: sticky;
+}
+
+/* Image styles within the ebook reader */
+.ebook-reader img {
+    max-width: 100%;  /* Images will not exceed the width of the ebook reader */
+    max-height: 80vh;  /* Ensure images are not too tall */
+    width: auto;  /* Maintain aspect ratio */
+    height: auto;  /* Maintain aspect ratio */
+    display: block;  /* Remove any inline spacing around images */
+    margin: 10px auto;  /* Center images and add some vertical margin */
+}
+
+.chapter {
+    max-height: 90%;  /* Limit the height to the container */
+    overflow-y: auto;  /* Allow scrolling for long chapters */
+}
+
+.ebook-reader h2, .ebook-reader p {
+    margin-bottom: 1em;  /* Space out paragraphs */
+    color: black;
+}
+
+.ebook-reader h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.ebook-reader h1 a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Navigation buttons styling */
+.navigation {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+.navigation button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #452B0C;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.navigation button:hover {
+    background-color: #ffffff40;
+    color: black;
+    border: 2px solid #452B0C;
+}
+.navigation button:active {
+    background-color: black;
+}
