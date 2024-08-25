@@ -2,7 +2,7 @@ import os
 import ebooklib
 from ebooklib import epub
 
-book_file = "The_Midnight_Library.epub"
+book_file = "Normal_People.epub"
 
 def load_images():
     # Define the directory to save images

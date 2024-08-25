@@ -28,7 +28,6 @@ Pixel Pages is an online ebook library application that allows users to read ebo
 ## Setup Instructions
 
 1. **Clone the Repository** 
-   (Replace with your specific instructions)
 
 2. **Install Dependencies**
 
