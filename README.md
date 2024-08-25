@@ -1,5 +1,3 @@
-Markdown
-
 # Pixel Pages: Online Ebook Library
 
 ## Project Overview
