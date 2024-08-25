@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Pixel Pages is an online ebook library application that allows users to read ebooks and navigate through chapters. It aims to provide a seamless reading experience with features like navigation and image handling. [Image of Pixel Pages app]
+Pixel Pages is an online ebook library application that allows users to read ebooks and navigate through chapters. It aims to provide a seamless reading experience with features like navigation and image handling.
 
 ## Current Features
 
