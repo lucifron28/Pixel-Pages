@@ -2,6 +2,8 @@ import os
 import ebooklib
 from ebooklib import epub
 
+book_file = "The_Midnight_Library.epub"
+
 def load_images():
     # Define the directory to save images
     IMAGES_DIR = 'static/ebook_images'
@@ -10,7 +12,7 @@ def load_images():
     os.makedirs(IMAGES_DIR, exist_ok=True)
 
     # Load the EPUB book
-    book = epub.read_epub("static/ebooks/Pride_and_Prejudice.epub")
+    book = epub.read_epub(f"static/ebooks/{book_file}")
 
     # Save images from the book
     for item in book.get_items_of_type(ebooklib.ITEM_IMAGE):
