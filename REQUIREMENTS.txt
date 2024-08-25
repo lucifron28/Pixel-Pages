@@ -1,0 +1,13 @@
+beautifulsoup4==4.12.3
+blinker==1.8.2
+bs4==0.0.2
+click==8.1.7
+EbookLib==0.18
+Flask==3.0.3
+itsdangerous==2.2.0
+Jinja2==3.1.4
+lxml==5.3.0
+MarkupSafe==2.1.5
+six==1.16.0
+soupsieve==2.6
+Werkzeug==3.0.4
