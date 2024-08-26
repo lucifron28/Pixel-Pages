@@ -1,19 +1,40 @@
+<!-- templates/base.html -->
 <!DOCTYPE html>
-<html lang="en"></html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <title>{% block title %} {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Other head elements -->
 </head>
-<body class="{% block ClassBody %} {% endblock %}" >
-    <header>
-        {% block header %} {% endblock %}
+<body class="{% block ClassBody %}{% endblock %}">
+    <header class="{% block header_class %} header {% endblock %}">
+        {% block header %}
+            <nav>
+                <div class="logo-title">
+                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="logo" class="logo">
+                    <h1>Pixel Pages</h1>
+                </div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/browse_books">Browse Books</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="/log-out">Log-out</a></li>
+                </ul>
+            </nav>
+        {% endblock %}
     </header>
-
+    
     <main>
-        {% block main %} {% endblock %}
+        {% block main %}{% endblock %}
     </main>
-    <footer></footer>
+
+    <footer>
+        {% block footer %}{% endblock %}
+    </footer>
+    
+    <!-- JavaScript block for child templates to inject scripts -->
+    {% block scripts %}{% endblock %}
 </body>
 </html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Browse Books {% endblock %}
+
+{% block ClassBody %} browse-books-body {% endblock %}
+
+{% block main %}
+    <h2>Browse Books</h2>
+
+    <p>Explore a wide range of books by searching below. Enter a title or author to discover new reads.</p>
+
+    <!-- Search Form -->
+    <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Enter book title or author" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Results Section -->
+    <div id="result">
+        <h3>Book Details:</h3>
+        <p id="details"></p>
+        <img id="thumbnail" src="" alt="Book Thumbnail" style="display:none;">
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Include the JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+{% endblock %}

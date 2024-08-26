@@ -2,6 +2,7 @@
     position: relative;
     display: flex;
     margin: 20px; /* Added some margin for spacing */
+    text-shadow: 1px 1px black;
 }
 
 .inputBox input {
@@ -11,7 +12,7 @@
     background: transparent;
     border: 3px solid;
     border-image: linear-gradient(to right, black, rgb(33, 22, 1), orange) 1;
-    color: #fff;
+    color: black;
     font-size: 1em;
     transition: 0.4s cubic-bezier(0.05, 0.81, 0, 0.93);
     justify-content: center;
@@ -21,6 +22,17 @@
     position: absolute;
     top: 50%;
     left: 100px;
+    transform: translateY(-50%);
+    color: #fff;
+    pointer-events: none;
+    transition: 0.4s;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.inputBox span.confirm {
+    position: absolute;
+    top: 50%;
+    left: 70px;
     transform: translateY(-50%);
     color: #fff;
     pointer-events: none;
@@ -43,20 +55,26 @@
 }
 
 .login-body {
-    background-color: #333;
     font-family: Arial, sans-serif;
     color: #fff;
+}
+
+
+.login-body .login-header {
+    border-bottom: 2px solid black;
+}
+
+.login-body main, .register-body main {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
-    margin: 0;
 }
-form {
+
+.login-body form,
+.register-body form {
     display: block;
     justify-items: center; 
     align-items: center; 
-    gap: 20px; 
     border-width: 4px;
     border-style: solid;
     border-image: linear-gradient(to right, black, rgb(33, 22, 1), orange) 1;
@@ -64,48 +82,84 @@ form {
     height: 250px;
     padding: 25px;
     text-align: center;
-    text-shadow: 3px 3px black;
-    box-shadow: 0px -25px 20px -20px rgba(0,0,0,0.45),
-    25px 0px 20px -20px rgba(0,0,0,0.45),
-    0px 25px 20px -20px rgba(0,0,0,0.45),
-    -25px 0px 20px -20px rgba(0,0,0,0.45);
+    margin-top: 10%;
+    background-color: rgba(255, 255, 255, 0.353);
 }
 
-form .buttons {
-    display: flex;
-    justify-content: center;
+.register-body form {
+    height: 320px;
 }
 
-form button {
-    width: 30%; /* Adjust width if needed */
-    border-radius: 10%;
-    background-image: linear-gradient(to right, black, rgb(33, 22, 1), orange);
-    color: white;
+.login-body form .login button, 
+.register-body form button {
+    display: block;
+    width: 50%; /* Adjust width if needed */
+    border-radius: 100px;
+    background-image: white;
+    color: black;
     text-align: center; /* Center text inside the button */
     padding: 5px; /* Optional: add padding for aesthetics */
     margin: 0 auto;
     border: 3px solid black;
 }
-form h2 {
+
+.login-body form .login button:hover, 
+.register-body form button:hover {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.688);
+    color: white;
+}
+
+.login-body form .registration,
+.register-body form .login-account {
+    display: inline-flex;
+    align-items: center;
+    color: black;
+    font-size: 15px;
+}
+
+.login-body form .registration a,
+.register-body form .login-account a {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-align: center; /* Center text inside the button */
+    margin: 0 auto;
+    margin-left: 5px;
+}
+
+.login-body form .registration a:hover,
+.register-body form .login-account a:hover {
+    font-weight: bold;
+}
+
+.login-body form h2, 
+.register-body form h2{
     display: inline;
-    color: #ee8456;
+    color: #fff;
+    text-shadow: 3px 3px black;
 }
 
-form button:hover {
-    transform: scale(1.2);
+.login-account {
+    display: inline-flex;
 }
 
-.main-page {
-    background-color: #333;
+body {
     font-family: Arial, sans-serif;
     color: #fff;
+    background-image: url("../static/img/login-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-header {
+.header {
+    position: relative;
     padding: 0;
     margin: 0;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
     width: 100%;
+    text-shadow: 3px 3px black;
 }
 
 nav {
@@ -145,6 +199,7 @@ nav a:active {
     display: inline-flex;
     height: 60px;
     border-radius: 50%;
+    border: 3px solid black;
 }
 
 .logo-title {
