@@ -16,15 +16,26 @@
                     <h1>Pixel Pages</h1>
                 </div>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/browse_books">Browse Books</a></li>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('browse_books') }}">Browse Books</a></li>
                     <li><a href="#">Categories</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="/log-out">Log-out</a></li>
+                    <li><a href="#">Upload E-book</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log-out</a></li>
                 </ul>
             </nav>
         {% endblock %}
     </header>
+    
+    <!-- Flash messages block -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flashes">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     
     <main>
         {% block main %}{% endblock %}
@@ -35,6 +46,21 @@
     </footer>
     
     <!-- JavaScript block for child templates to inject scripts -->
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+    <script>
+        // Function to hide flash messages after a certain time
+        function hideFlashes() {
+            const flashes = document.querySelectorAll('.flash');
+            flashes.forEach(flash => {
+                setTimeout(() => {
+                    flash.style.display = 'none';
+                }, 3000); // 3000 milliseconds = 3 seconds
+            });
+        }
+
+        // Call the function to hide flash messages
+        document.addEventListener('DOMContentLoaded', hideFlashes);
+    </script>
+    {% endblock %}
 </body>
 </html>

@@ -2,32 +2,28 @@
 
 {% block title %} Login {% endblock %}
 
-
-
 {% block ClassBody %} login-body {% endblock %}
 {% block header_class %} login-header {% endblock %}
 {% block header %}
     <h1>Pixel Pages: An Online E-book Library</h1>
 {% endblock %}
-    {% block main %}
-
-        <form action="/"">
-            <h2>Login</h2>
-            <div class="inputBox">
-                <input type="text" required>
-                <span>Username</span>
-            </div>
-            <div class="inputBox">
-                <input type="password" required>
-                <span>Password</span>
-            </div>
-            <div class="login">
-                <button type="submit">Login</button>
-            </div>
-            <div class="registration">
-                <p>Don't have an account?</p>
-                <a href="register">Create an account.</a>
-            </div>
-        </form>
-    {% endblock %}
-</div>
+{% block main %}
+    <form action="{{ url_for('login') }}" method="POST">
+        <h2>Login</h2>
+        <div class="inputBox">
+            <input type="text" name="email" required>
+            <span>Email</span>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="password" required>
+            <span>Password</span>
+        </div>
+        <div class="login">
+            <button type="submit">Login</button>
+        </div>
+        <div class="registration">
+            <p>Don't have an account?</p>
+            <a href="{{ url_for('register') }}">Create an account.</a>
+        </div>
+    </form>
+{% endblock %}
