@@ -5,19 +5,26 @@ Pixel Pages is an online ebook library application that allows users to read ebo
 ## Current Features
 
 * **User Authentication**: Users can register, log in, and log out.
-* **Ebook Reader**: Read and navigate through chapters of EPUB files. (under development)
+* **Ebook Reader**: Read and navigate through chapters of EPUB files.
 * **Dynamic Image Handling**: Automatically extract and display images from EPUB files.
-* **Book Search**: Search for books using the Google Books API. (under development)
-* **Book Upload**: Authenticated users can upload their own EPUB files. (under development)
+* **Book Search**: Search for books using the Google Books API.
+* **Book Upload**: Authenticated users can upload their own EPUB files.
+* **Categories**: Browse books by categories.
 
 ## Technologies Used
 
-* **Flask**: Web framework for building the application.
-* **Flask-Login**: User session management.
-* **SQLAlchemy**: ORM for database interactions.
-* **EbookLib**: Library for working with EPUB files.
-* **BeautifulSoup**: Library for parsing HTML content.
-* **Google Books API**: Fetch book details.
+* **Front-End**:
+  * HTML/CSS: Structure and styling of web pages.
+  * JavaScript: Handling dynamic content.
+  * Jinja2: Templating engine for rendering dynamic content.
+
+* **Back-End**:
+  * Flask: Web framework for building the application.
+  * Flask-Login: User session management.
+  * SQLAlchemy: ORM for database interactions.
+  * EbookLib: Library for working with EPUB files.
+  * BeautifulSoup: Library for parsing HTML content.
+  * Google Books API: Fetch book details.
 
 ## Project Structure
 
@@ -57,7 +64,7 @@ Pixel Pages is an online ebook library application that allows users to read ebo
       pip install -r requirements.txt
 
 **Future Enhancements**
-Support for multiple ebook formats.
-Improved image handling and resizing.
-Additional features like bookmarks and notes.
-Enhanced search functionality with more filters.
+   Support for multiple ebook formats.
+   Improved image handling and resizing.
+   Additional features like bookmarks and notes.
+   Enhanced search functionality with more filters.
