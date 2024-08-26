@@ -28,3 +28,7 @@ document.getElementById('next-chapter').addEventListener('click', () => {
         loadChapter(currentChapter);
     }
 });
+
+
+
+// script for api fetched from google books api via python requests

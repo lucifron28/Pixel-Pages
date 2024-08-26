@@ -2,9 +2,13 @@
 
 {% block title %} Login {% endblock %}
 
-{% block header %} {% endblock %}
+
 
 {% block ClassBody %} login-body {% endblock %}
+{% block header_class %} login-header {% endblock %}
+{% block header %}
+    <h1>Pixel Pages: An Online E-book Library</h1>
+{% endblock %}
     {% block main %}
 
         <form action="/"">
@@ -17,9 +21,12 @@
                 <input type="password" required>
                 <span>Password</span>
             </div>
-            <div class="buttons">
+            <div class="login">
                 <button type="submit">Login</button>
-                <button type="submit">Sign-up</button>
+            </div>
+            <div class="registration">
+                <p>Don't have an account?</p>
+                <a href="register">Create an account.</a>
             </div>
         </form>
     {% endblock %}
