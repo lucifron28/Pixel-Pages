@@ -8,22 +8,20 @@
     <!-- Other head elements -->
 </head>
 <body class="{% block ClassBody %}{% endblock %}">
-    <header class="{% block header_class %} header {% endblock %}">
-        {% block header %}
-            <nav>
-                <div class="logo-title">
-                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="logo" class="logo">
-                    <h1>Pixel Pages</h1>
-                </div>
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('browse_books') }}">Browse Books</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Upload E-book</a></li>
-                    <li><a href="{{ url_for('logout') }}">Log-out</a></li>
-                </ul>
-            </nav>
-        {% endblock %}
+    <header class="{% block header_class %}header{% endblock %}">
+        <nav>
+            <div class="logo-title">
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="logo" class="logo">
+                <h1>Pixel Pages</h1>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('browse_books') }}">Browse Books</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="{{ url_for('upload') }}">Upload E-book</a></li>
+                <li><a href="{{ url_for('logout') }}">Log-out</a></li>
+            </ul>
+        </nav>
     </header>
     
     <!-- Flash messages block -->
@@ -42,7 +40,9 @@
     </main>
 
     <footer>
-        {% block footer %}{% endblock %}
+        <div class="footer-content">
+            <p>&copy; 2024 Pixel Pages. All rights reserved.</p>
+        </div>
     </footer>
     
     <!-- JavaScript block for child templates to inject scripts -->

@@ -59,7 +59,6 @@
     color: #fff;
 }
 
-
 .login-body .login-header {
     border-bottom: 2px solid black;
 }
@@ -280,10 +279,10 @@ nav a:active {
     color: black;
     border: 2px solid #452B0C;
 }
+
 .navigation button:active {
     background-color: black;
 }
-/* Add this to your existing style.css */
 
 /* Add this to your existing style.css */
 
@@ -321,4 +320,188 @@ nav a:active {
 
 .flash.success {
     background-color: green;
+}
+
+/* Add this to align the inputs */
+.upload-form input[type="text"],
+.upload-form input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Add this to create space between the navbar and the upload form */
+.upload-form {
+    margin-top: 20px;
+    background-color: rgba(101, 67, 33, 0.8);
+    text-align: center;
+    padding: 10px;
+    border: 2px solid black;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upload-form h2 {
+    color: #fff;
+    text-shadow: 3px 3px black;
+    margin-bottom: 20px;
+}
+
+.upload-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-form .form-group {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.upload-form label {
+    color: #fff;
+    text-shadow: 1px 1px black;
+    font-size: 1.2em;
+    display: block; /* Add this to make the label appear on top */
+    margin-bottom: 5px; /* Add some spacing between the label and input */
+}
+
+.upload-form input[type="text"],
+.upload-form input[type="file"] {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 1em;
+}
+
+.upload-form button[type="submit"] {
+    width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #452B0C;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-form button[type="submit"]:hover {
+    background-color: #ffffff40;
+}
+
+.upload-form button[type="submit"]:active {
+    background-color: black;
+}
+
+/* Add this to align the inputs */
+.upload-form input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.footer-content {
+    position: absolute;
+    bottom: 0;
+}
+
+.browse-books-body {
+    background-color: transparent;
+}
+
+.browse-books-body h2 {
+    color: #fff;
+    text-shadow: 3px 3px black;
+}
+
+.browse-books-body p {
+    color: #fff;
+}
+
+.browse-books-body form {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.browse-books-body input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 1em;
+}
+
+.browse-books-body button[type="submit"] {
+    width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #452B0C;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.browse-books-body button[type="submit"]:hover {
+    background-color: #ffffff40;
+}
+
+.browse-books-body button[type="submit"]:active {
+    background-color: black;
+}
+
+.browse-books-body #autocomplete-suggestions {
+    color: #fff;
+}
+
+.browse-books-body #result {
+    color: #fff;
+}
+
+.browse-books-body #result h3 {
+    color: #fff;
+    text-shadow: 3px 3px black;
+}
+
+.browse-books-body #result p {
+    color: #fff;
+}
+
+.browse-books-body #result img {
+    max-width: 200px;
+    max-height: 300px;
+    display: block;
+    margin: 0 auto;
+}
+
+.browse-books-body #bookModal {
+    color: #fff;
+}
+
+.browse-books-body #bookModal .modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.browse-books-body #bookModal .modal-content h3 {
+    color: #fff;
+    text-shadow: 3px 3px black;
+}
+
+.browse-books-body #bookModal .modal-content p {
+    color: #fff;
+}
+
+.browse-books-body #bookModal .modal-content img {
+    max-width: 200px;
+    max-height: 300px;
+    display: block;
+    margin: 0 auto;
 }

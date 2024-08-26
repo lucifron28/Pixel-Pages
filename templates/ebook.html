@@ -1,0 +1,23 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block title %} PixelPages: Online Ebook Library {% endblock %}
+
+{% block ClassBody %} ebook-page {% endblock %}
+
+{% block main %}
+    <div class="ebook-reader">
+        <div class="navigation">
+            <button id="prev-chapter">Previous</button>
+            <button id="next-chapter">Next</button>
+        </div>
+        <div id="content" class="chapter">
+            <!-- Chapter content will be loaded here -->
+        </div>
+    </div>
+    <script>
+        let currentChapter = {{ last_read_chapter }};
+        const totalChapters = {{ chapters }};
+    </script>
+    <script src="{{ url_for('static', filename='js/view_ebook.js') }}" defer></script>
+{% endblock %}
