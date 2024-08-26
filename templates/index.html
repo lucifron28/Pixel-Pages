@@ -23,9 +23,5 @@
         let currentChapter = {{ last_read_chapter }};
         const totalChapters = {{ chapters }};
     </script>
-{% endblock %}
-
-{% block scripts %}
-    <!-- Include the JavaScript file -->
     <script src="{{ url_for('static', filename='js/view_ebook.js') }}" defer></script>
 {% endblock %}

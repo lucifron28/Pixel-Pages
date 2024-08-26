@@ -283,3 +283,42 @@ nav a:active {
 .navigation button:active {
     background-color: black;
 }
+/* Add this to your existing style.css */
+
+/* Add this to your existing style.css */
+
+.flashes {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flash {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.flash.info {
+    background-color: blue;
+}
+
+.flash.warning {
+    background-color: orange;
+}
+
+.flash.error {
+    background-color: red;
+}
+
+.flash.success {
+    background-color: green;
+}
