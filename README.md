@@ -1,51 +1,63 @@
-# Pixel Pages: Online Ebook Library
+# Pixel Pages
 
-## Project Overview
-
-Pixel Pages is an online ebook library application that allows users to read ebooks and navigate through chapters. It aims to provide a seamless reading experience with features like navigation and image handling.
+Pixel Pages is an online ebook library application that allows users to read ebooks, navigate through chapters, and manage their own ebook uploads. It aims to provide a seamless reading experience with features like navigation, image handling, and book search.
 
 ## Current Features
 
-* User Authentication (under development)
-* Ebook Reader for reading and navigating chapters
-* Dynamic Image Handling for automatically extracting and displaying images
+* **User Authentication**: Users can register, log in, and log out.
+* **Ebook Reader**: Read and navigate through chapters of EPUB files. (under development)
+* **Dynamic Image Handling**: Automatically extract and display images from EPUB files.
+* **Book Search**: Search for books using the Google Books API. (under development)
+* **Book Upload**: Authenticated users can upload their own EPUB files. (under development)
 
 ## Technologies Used
 
-* **Flask:** Web framework for building the application.
-* **EbookLib:** Library for working with EPUB files.
-* **BeautifulSoup:** Library for parsing HTML content.
+* **Flask**: Web framework for building the application.
+* **Flask-Login**: User session management.
+* **SQLAlchemy**: ORM for database interactions.
+* **EbookLib**: Library for working with EPUB files.
+* **BeautifulSoup**: Library for parsing HTML content.
+* **Google Books API**: Fetch book details.
 
 ## Project Structure
 
 * `app.py`: Main Flask application file (routes & logic).
 * `reader.py`: Functionality for loading and managing ebook images.
+* `api_service.py`: Fetch book details from Google Books API.
 * `static/ebooks/`: Directory for storing EPUB files.
 * `static/ebook_images/`: Directory for extracted ebook images.
+* `static/js/view_ebook.js`: JavaScript file for handling dynamic content.
 * `templates/`: Directory for HTML templates.
-* `static/script.js`: JavaScript file for handling dynamic content.
+  * `base.html`: Base template for the application.
+  * `index.html`: Home page template.
+  * `login.html`: Login page template.
+  * `register.html`: Registration page template.
+  * `browse_books.html`: Browse books page template.
 
 ## Setup Instructions
 
-1. **Clone the Repository** 
-
-2. **Install Dependencies**
-
-   Ensure you have Python installed. Then, create a virtual environment (recommended) and install packages from `requirements.txt`.
+1. **Clone the Repository**
 
    ```bash
-   # Create a virtual environment
-   python -m venv venv
+   git clone https://github.com/yourusername/pixel-pages.git
+   cd pixel-pages
 
-   # Activate the virtual environment (Windows/Linux)
-   source venv/bin/activate
+2. **Install Dependencies**
+      Ensure you have Python installed. Then, create a virtual environment (recommended) and install packages from requirements.txt.
+      # Create a virtual environment
+      python -m venv venv
 
-   # Install dependencies
-   pip install -r requirements.txt
+      # Activate the virtual environment (Linux/Mac)
+      source venv/bin/activate
 
-Future Enhancements:
+      # Activate the virtual environment (Windows)
+      venv\Scripts\activate
 
-    User authentication with Flask Login.
-    Support for multiple ebook formats.
-    Improved image handling and resizing.
-    Additional features like bookmarks and notes.
+      # Install dependencies
+      pip install -r requirements.txt
+
+**Future Enhancements**
+Support for multiple ebook formats.
+Improved image handling and resizing.
+Additional features like bookmarks and notes.
+Enhanced search functionality with more filters.
