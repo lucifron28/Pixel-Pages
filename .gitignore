@@ -1,5 +1,6 @@
 /__pycache__
 /env
-/instance
+/instance/users.db
 /static/ebook_images/
 .idea/
+.env

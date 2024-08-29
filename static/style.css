@@ -36,8 +36,8 @@
     top: 50%;
     left: 70px;
     transform: translateY(-50%);
-    color: #fff;
-    pointer-events: none;
+    color: #000;
+    text-shadow: 1px 1px white;
     transition: 0.4s;
     font-family: 'Times New Roman', Times, serif;
 }
