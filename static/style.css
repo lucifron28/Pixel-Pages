@@ -23,10 +23,12 @@
     top: 50%;
     left: 100px;
     transform: translateY(-50%);
-    color: #fff;
+    color: #000000;
     pointer-events: none;
     transition: 0.4s;
     font-family: 'Times New Roman', Times, serif;
+    text-shadow: 1px 1px white;
+    font-weight: 700;
 }
 
 .inputBox span.confirm {
@@ -52,6 +54,7 @@
     letter-spacing: 0em;
     border: 1px solid #ee8456;
     text-shadow: none;
+    color: white;
 }
 
 .login-body {

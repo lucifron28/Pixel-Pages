@@ -14,6 +14,7 @@
                 <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="logo" class="logo">
                 <h1>Pixel Pages</h1>
             </div>
+            {% block navigation %}
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('browse_books') }}">Browse Books</a></li>
@@ -21,6 +22,7 @@
                 <li><a href="{{ url_for('upload') }}">Upload E-book</a></li>
                 <li><a href="{{ url_for('logout') }}">Log-out</a></li>
             </ul>
+            {% endblock %}
         </nav>
     </header>
     
