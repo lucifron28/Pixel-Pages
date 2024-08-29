@@ -6,10 +6,12 @@ Pixel Pages is an online ebook library application that allows users to read ebo
 
 * **User Authentication**: Users can register, log in, and log out.
 * **Ebook Reader**: Read and navigate through chapters of EPUB files.
-* **Dynamic Image Handling**: Automatically extract and display images from EPUB files.
-* **Book Search**: Search for books using the Google Books API.
-* **Book Upload**: Authenticated users can upload their own EPUB files.
-* **Categories**: Browse books by categories.
+* **Dynamic Image Handling**: Automatically extract and display images from EPUB files. (Work in progress)
+* **Book Search**: Search for books using the Google Books API. (Work in progress)
+* **Book Upload**: Authenticated users can upload their own EPUB files. (Work in progress)
+* **Categories**: Browse books by categories. (Work in progress)
+
+Please note that some of the features mentioned above are still under development and may not be fully functional at this time.
 
 ## Technologies Used
 
