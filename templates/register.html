@@ -3,12 +3,7 @@
 {% block title %} Register {% endblock %}
 
 {% block ClassBody %} register-body {% endblock %}
-
-{% block header_class %} login-header {% endblock %}
-
-{% block header %}
-    <h1>Pixel Pages: An Online E-book Library</h1>
-{% endblock %}
+{% block navigation %}{% endblock %}
 
 {% block main %}
     <form action="{{ url_for('register') }}" method="POST">
