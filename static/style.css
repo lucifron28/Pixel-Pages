@@ -335,7 +335,7 @@ nav a:active {
 /* Add this to create space between the navbar and the upload form */
 .upload-form {
     margin-top: 20px;
-    background-color: rgba(101, 67, 33, 0.8);
+    background-color: rgba(255, 255, 255, 0.659);
     text-align: center;
     padding: 10px;
     border: 2px solid black;
@@ -363,7 +363,7 @@ nav a:active {
 
 .upload-form label {
     color: #fff;
-    text-shadow: 1px 1px black;
+    text-shadow: 2px 2px black;
     font-size: 1.2em;
     display: block; /* Add this to make the label appear on top */
     margin-bottom: 5px; /* Add some spacing between the label and input */
@@ -378,6 +378,7 @@ nav a:active {
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
     font-size: 1em;
+    border: black 2px solid;
 }
 
 .upload-form button[type="submit"] {
