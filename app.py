@@ -113,7 +113,9 @@ def upload():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         
         # Process the uploaded file (e.g., extract metadata, save to database)
-        # ...
+        book = Book(title=title, author=author, file=file.filename)
+        db.session.add(book)
+        db.session.commit()
         
         flash('Ebook uploaded successfully.', 'success')
         return redirect(url_for('index'))
