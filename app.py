@@ -9,7 +9,7 @@ import os
 import reader
 from dotenv import load_dotenv
 from models import db, User, Book
-from blueprints.auth import auth_bp  # Import the Blueprint
+from blueprints.auth import auth_bp
 
 # Ensure images are loaded from the correct EPUB file
 reader.load_images()
@@ -24,7 +24,7 @@ app.config['UPLOAD_FOLDER'] = 'static/ebooks'
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'auth.login'  # Update login view to include Blueprint prefix
+login_manager.login_view = 'auth.login'
 
 @login_manager.user_loader
 def load_user(user_id):
