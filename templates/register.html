@@ -6,7 +6,7 @@
 {% block navigation %}{% endblock %}
 
 {% block main %}
-    <form action="{{ url_for('register') }}" method="POST">
+    <form action="{{ url_for('auth.register') }}" method="POST">
         <h2>Register</h2>
         <div class="inputBox">
             <input type="text" required name="register-username">
@@ -25,7 +25,7 @@
         </div>
         <div class="login-account">
             <p>Already have an account?</p>
-            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('auth.login') }}">Login</a>
         </div>
     </form>
 {% endblock %}

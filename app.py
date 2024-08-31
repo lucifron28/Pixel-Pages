@@ -1,6 +1,5 @@
 from flask import Flask, render_template, jsonify, session, redirect, request, flash, url_for
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import ebooklib
 from ebooklib import epub
@@ -9,82 +8,34 @@ from api_service import fetch_book_details
 import os
 import reader
 from dotenv import load_dotenv
+from models import db, User, Book
+from blueprints.auth import auth_bp  # Import the Blueprint
 
 # Ensure images are loaded from the correct EPUB file
 reader.load_images()
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY')
+app.secret_key = os.getenv('SECRET_KEY') 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'static/ebooks'
 
-db = SQLAlchemy(app)
+db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), unique=True, nullable=False)
-    password = db.Column(db.String(150), nullable=False)
-
-class Book(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(150), nullable=False)
-    author = db.Column(db.String(150), nullable=False)
-    file = db.Column(db.String(150), nullable=False)
-
+login_manager.login_view = 'auth.login'  # Update login view to include Blueprint prefix
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = User.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password, password):
-            login_user(user)
-            flash('Logged in successfully.', 'success')
-            return redirect(url_for('index'))
-        else:
-            flash('Invalid credentials.', 'error')
-    return render_template("login.html")
+@app.before_request
+def create_tables():
+    db.create_all()
 
-@app.route("/logout")
-@login_required
-def logout():
-    logout_user()
-    flash('You have been logged out.', 'info')
-    return redirect(url_for('login'))
-
-@app.route("/register", methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        username = request.form['register-username']
-        password = request.form['register-password']
-        confirm_password = request.form['register-confirm-password']
-        
-        if password != confirm_password:
-            flash('Passwords do not match.', 'error')
-            return redirect(url_for('register'))
-        
-        if User.query.filter_by(username=username).first():
-            flash('username already exists.', 'warning')
-            return redirect(url_for('register'))
-        
-        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-        new_user = User(username=username, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-        flash('Registration successful. Please log in.', 'success')
-        return redirect(url_for('login'))
-    
-    return render_template("register.html")
+# Register Blueprints
+app.register_blueprint(auth_bp, url_prefix='/auth')
 
 @app.route("/")
 @login_required
