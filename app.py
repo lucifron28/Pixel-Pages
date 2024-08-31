@@ -18,6 +18,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['UPLOAD_FOLDER'] = 'static/ebooks'
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
@@ -26,8 +27,15 @@ login_manager.login_view = 'login'
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True, nullable=False)
+    username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
+
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(150), nullable=False)
+    author = db.Column(db.String(150), nullable=False)
+    file = db.Column(db.String(150), nullable=False)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -36,9 +44,9 @@ def load_user(user_id):
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
+        username = request.form['username']
         password = request.form['password']
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password, password):
             login_user(user)
             flash('Logged in successfully.', 'success')
@@ -57,7 +65,7 @@ def logout():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        email = request.form['register-username']
+        username = request.form['register-username']
         password = request.form['register-password']
         confirm_password = request.form['register-confirm-password']
         
@@ -65,12 +73,12 @@ def register():
             flash('Passwords do not match.', 'error')
             return redirect(url_for('register'))
         
-        if User.query.filter_by(email=email).first():
-            flash('Email already exists.', 'warning')
+        if User.query.filter_by(username=username).first():
+            flash('username already exists.', 'warning')
             return redirect(url_for('register'))
         
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-        new_user = User(email=email, password=hashed_password)
+        new_user = User(username=username, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         flash('Registration successful. Please log in.', 'success')
