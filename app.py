@@ -11,7 +11,6 @@ import reader
 from config import Config
 import ebooklib
 from ebooklib import epub
-from api_service import fetch_book_details
 
 # Ensure images are loaded from the correct EPUB file
 reader.load_images()
@@ -49,9 +48,16 @@ def index():
     # Retrieve the last read chapter from the session, default to 0 if not set
     last_read_chapter = session.get('last_read_chapter', 0)
     print(f"Last read chapter retrieved from session: {last_read_chapter}")
-    
+    # access the user's books from the database
+    user = User.query.get(session['user_id'])
+    books = user.books
+    # get the title and thumbnail of all the books
+    book_preview = [{'title': book.title, 'thumbnail': book.thumbnail, 'author': book.author} for book in books]
     # Render the index page with the number of chapters and the last read chapter
-    return render_template("index.html", chapters=len(chapters), last_read_chapter=last_read_chapter)
+    return render_template("index.html", 
+                           chapters=len(chapters), 
+                           last_read_chapter=last_read_chapter, 
+                           book_preview=book_preview)
 
 
 # Create the database if it doesn't exist
