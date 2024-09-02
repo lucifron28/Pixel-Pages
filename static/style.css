@@ -509,3 +509,13 @@ nav a:active {
     display: block;
     margin: 0 auto;
 }
+
+
+.books {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    justify-items: center;
+}
