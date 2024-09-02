@@ -11,6 +11,8 @@ books_bp = Blueprint('books', __name__)
 @books_bp.route("/browse_books")
 @login_required
 def browse_books():
+    title = request.args.get('searchQuery', '')
+    book_details = fetch_book_details(title)
     return render_template("browse_books.html")
 
 @books_bp.route("/upload", methods=['GET', 'POST'])
@@ -46,6 +48,7 @@ def read(book_id):
         flash('Book not found.', 'error')
         return redirect(url_for('index'))
     file = book.file
+    session["file"] = file
     book = epub.read_epub(os.path.join(current_app.config['UPLOAD_FOLDER'], file))
     chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
     last_read_chapter = session.get('last_read_chapter', 0)
