@@ -7,13 +7,9 @@ from blueprints.books import books_bp
 from blueprints.chapters import chapters_bp
 from blueprints.search import search_bp
 import os
-import reader
 from config import Config
-import ebooklib
-from ebooklib import epub
 
 # Ensure images are loaded from the correct EPUB file
-reader.load_images()
 load_dotenv()
 
 app = Flask(__name__)
