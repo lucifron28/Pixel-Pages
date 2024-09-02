@@ -1,16 +1,3 @@
-// Function to hide flash messages after a certain time
-function hideFlashes() {
-	const flashes = document.querySelectorAll('.flash');
-	flashes.forEach(flash => {
-		setTimeout(() => {
-			flash.style.display = 'none';
-		}, 3000); // 3000 milliseconds = 3 seconds
-	});
-}
-
-// Call the function to hide flash messages
-document.addEventListener('DOMContentLoaded', hideFlashes);
-
 // Autocomplete suggestions
 document.getElementById('searchQuery').addEventListener('input', function() {
 	const query = this.value;

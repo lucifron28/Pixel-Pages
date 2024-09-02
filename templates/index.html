@@ -14,7 +14,7 @@
         <h3>Featured Books</h3>
         <div class="books">
             {% for book in books %}
-                <a href="{{ url_for('books.read', book_id=book.id) }}"></a>
+                <a href="{{ url_for('books.read', book_id=book.id) }}">
                     <div class="book">
                         <img src="{{ book.thumbnail }}" alt="Book Cover">
                         <h4>{{ book.title }}</h4>

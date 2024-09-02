@@ -6,4 +6,6 @@
 .env
 test.html
 testread.py
-blueprints/__pycache__
+blueprints/__pycache__/
+static/ebook_images/
+static/ebooks/
