@@ -6,11 +6,13 @@ load_dotenv()
 
 API_KEY = os.getenv('API_KEY')
 
-def fetch_book_details(title, author):
+def fetch_book_details(title, author=None):
     """Fetch book details including title, authors, published date, thumbnail, description, and category from Google Books API."""
     title.replace(' ', '+')
-    author.replace(' ', '+')
-    query = f'intitle:{title}+inauthor:{author}'
+    if author:
+        author.replace(' ', '+')
+        query = f'intitle:{title}+inauthor:{author}'
+    query = f'intitle:{title}'
     api_url = f'https://www.googleapis.com/books/v1/volumes?q={query}&key={API_KEY}'
     print(api_url)
     response = requests.get(api_url)

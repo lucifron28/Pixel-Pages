@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from flask_login import login_required, current_user
-from models import db, Book
+from models import db, Book, User
 import os
 from api_service import fetch_book_details
+import ebooklib
+from ebooklib import epub
 
 books_bp = Blueprint('books', __name__)
 
@@ -20,7 +22,7 @@ def upload():
         file = request.files['file']
         
         # fetch book details from Google Books API
-        book_details = fetch_book_details(title)
+        book_details = fetch_book_details(title, author)
         thumbnail = book_details.get('thumbnail', 'No thumbnail available')
 
         # Save the uploaded file
@@ -32,6 +34,22 @@ def upload():
         db.session.commit()
         
         flash('Ebook uploaded successfully.', 'success')
-        return redirect(url_for('books.browse_books'))
+        return redirect(url_for('index'))
     
     return render_template("upload.html")
+
+@books_bp.route("/read/<int:book_id>")
+@login_required
+def read(book_id):
+    book = Book.query.get(book_id)
+    if book is None:
+        flash('Book not found.', 'error')
+        return redirect(url_for('index'))
+    file = book.file
+    book = epub.read_epub(os.path.join(current_app.config['UPLOAD_FOLDER'], file))
+    chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
+    last_read_chapter = session.get('last_read_chapter', 0)
+    print(f"Last read chapter retrieved from session: {last_read_chapter}")
+    return render_template("ebook.html", 
+                           chapters=len(chapters), 
+                           last_read_chapter=last_read_chapter)
