@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, jsonify
+from flask import Flask, render_template, session
 from flask_login import LoginManager, login_required
 from dotenv import load_dotenv
 from models import db, User
@@ -11,7 +11,7 @@ import reader
 from config import Config
 import ebooklib
 from ebooklib import epub
-from bs4 import BeautifulSoup
+from api_service import fetch_book_details
 
 # Ensure images are loaded from the correct EPUB file
 reader.load_images()
@@ -49,7 +49,7 @@ def index():
     # Retrieve the last read chapter from the session, default to 0 if not set
     last_read_chapter = session.get('last_read_chapter', 0)
     print(f"Last read chapter retrieved from session: {last_read_chapter}")
-
+    
     # Render the index page with the number of chapters and the last read chapter
     return render_template("index.html", chapters=len(chapters), last_read_chapter=last_read_chapter)
 
