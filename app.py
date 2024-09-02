@@ -41,24 +41,13 @@ app.register_blueprint(search_bp, url_prefix='/search')
 @app.route("/")
 @login_required
 def index():
-    # Load the eBook and get the list of chapters
-    book = epub.read_epub(f"static/ebooks/{reader.book_file}")
-    chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
-    
-    # Retrieve the last read chapter from the session, default to 0 if not set
-    last_read_chapter = session.get('last_read_chapter', 0)
-    print(f"Last read chapter retrieved from session: {last_read_chapter}")
-    # access the user's books from the database
-    user = User.query.get(session['user_id'])
-    books = user.books
-    # get the title and thumbnail of all the books
-    book_preview = [{'title': book.title, 'thumbnail': book.thumbnail, 'author': book.author} for book in books]
-    # Render the index page with the number of chapters and the last read chapter
-    return render_template("index.html", 
-                           chapters=len(chapters), 
-                           last_read_chapter=last_read_chapter, 
-                           book_preview=book_preview)
+    # load all user's books
+    books = User.query.get(session['user_id']).books
 
+    # load all the book information
+    book_info = [{'title': book.title, 'author': book.author, 'thumbnail': book.thumbnail, 'id': book.id} for book in books]
+
+    return render_template("index.html", books=book_info)
 
 # Create the database if it doesn't exist
 if not os.path.exists('users.db'):
