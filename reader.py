@@ -2,9 +2,8 @@ import os
 import ebooklib
 from ebooklib import epub
 
-book_file = "Normal_People.epub"
 
-def load_images():
+def load_images(book_file):
     # Define the directory to save images
     IMAGES_DIR = 'static/ebook_images'
 
