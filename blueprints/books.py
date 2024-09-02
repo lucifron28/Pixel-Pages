@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from flask_login import login_required, current_user
 from models import db, Book
 import os
+from api_service import fetch_book_details
 
 books_bp = Blueprint('books', __name__)
 
@@ -18,11 +19,15 @@ def upload():
         author = request.form['author']
         file = request.files['file']
         
+        # fetch book details from Google Books API
+        book_details = fetch_book_details(title)
+        thumbnail = book_details.get('thumbnail', 'No thumbnail available')
+
         # Save the uploaded file
         file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], file.filename))
         
         # Process the uploaded file (e.g., extract metadata, save to database)
-        book = Book(title=title, author=author, file=file.filename, user_id=current_user.id)
+        book = Book(title=title, author=author, file=file.filename, user_id=current_user.id, thumbnail=thumbnail)
         db.session.add(book)
         db.session.commit()
         
