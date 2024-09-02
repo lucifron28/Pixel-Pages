@@ -10,18 +10,18 @@
 
     <p>Discover a world of knowledge and imagination at your fingertips! Our ebook library offers a diverse collection of books across various genres. Whether you're looking for the latest bestsellers, timeless classics, or something entirely new, you're in the right place.</p>
 
-    <div class="ebook-reader">
-        <div class="navigation">
-            <button id="prev-chapter">Previous</button>
-            <button id="next-chapter">Next</button>
-        </div>
-        <div id="content" class="chapter">
-            <!-- Chapter content will be loaded here -->
+    <div class="book-collection">
+        <h3>Featured Books</h3>
+        <div class="books">
+            {% for book in books %}
+                <a href="{{ url_for('books.read', book_id=book.id) }}"></a>
+                    <div class="book">
+                        <img src="{{ book.thumbnail }}" alt="Book Cover">
+                        <h4>{{ book.title }}</h4>
+                        <p>by {{ book.author }}</p>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
     </div>
-    <script>
-        let currentChapter = {{ last_read_chapter }};
-        const totalChapters = {{ chapters }};
-    </script>
-    <script src="{{ url_for('static', filename='js/view_ebook.js') }}" defer></script>
 {% endblock %}
