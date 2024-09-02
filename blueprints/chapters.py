@@ -7,11 +7,14 @@ import reader
 
 chapters_bp = Blueprint('chapters', __name__)
 
+
 @chapters_bp.route("/chapter/<int:chapter_id>")
 @login_required
 def chapter(chapter_id):
     # Load the eBook and get the list of chapters
-    book = epub.read_epub(f"static/ebooks/{reader.book_file}")
+    file = session.get("file")
+    reader.load_images(file)
+    book = epub.read_epub(f"static/ebooks/{file}")
     chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
     
     # Check if the chapter id is valid
