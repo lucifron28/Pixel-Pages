@@ -4,14 +4,15 @@ from flask_login import UserMixin
 db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), unique=True, nullable=False)
-    password = db.Column(db.String(150), nullable=False)
+    id = db.Column(db.Integer, primary_key=True) # ID of the user
+    username = db.Column(db.String(150), unique=True, nullable=False) # Username of the user
+    password = db.Column(db.String(150), nullable=False) # Password of the user
     books = db.relationship('Book', backref='owner', lazy=True)  # Relationship to Book
 
 class Book(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(150), nullable=False)
-    author = db.Column(db.String(150), nullable=False)
-    file = db.Column(db.String(150), nullable=False)
+    id = db.Column(db.Integer, primary_key=True) # ID of the book
+    title = db.Column(db.String(150), nullable=False) # Title of the book
+    author = db.Column(db.String(150), nullable=False) # Author of the book
+    file = db.Column(db.String(150), nullable=False) # File path
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Foreign key to User
+    thumbnail = db.Column(db.String(150), nullable=False)
