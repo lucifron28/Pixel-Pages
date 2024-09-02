@@ -36,5 +36,3 @@ def fetch_book_details(query):
             return {'error': 'No books found.'}
     else:
         return {'error': 'Failed to fetch data from Google Books API.'}
-
-print(fetch_book_details("I hope this doesn't find you"))
