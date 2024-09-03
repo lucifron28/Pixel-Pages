@@ -28,6 +28,7 @@ def logout():
     if os.path.exists(images_dir):
         shutil.rmtree(images_dir)
         os.makedirs(images_dir)
+    session.pop("user_id", None)
     logout_user()
     flash('You have been logged out.', 'info')
     return redirect(url_for('auth.login'))
