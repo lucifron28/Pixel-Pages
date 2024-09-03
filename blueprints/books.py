@@ -11,9 +11,16 @@ books_bp = Blueprint('books', __name__)
 @books_bp.route("/browse_books")
 @login_required
 def browse_books():
-    title = request.args.get('searchQuery', '')
-    book_details = fetch_book_details(title)
-    return render_template("browse_books.html")
+    if request.method == 'POST':
+        title = request.form.get('title')
+        if title:
+            book_details = fetch_book_details(title)
+            return redirect(url_for('books.browse_books', book_details=book_details))
+        else:
+            print("No title provided.")
+            flash('Please provide a title.', 'error')
+    else:
+        return render_template("browse_books.html")
 
 @books_bp.route("/upload", methods=['GET', 'POST'])
 @login_required
