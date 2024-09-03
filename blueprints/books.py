@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from flask_login import login_required, current_user
-from models import db, Book, User
+from models import db, Book
 import os
 from api_service import fetch_book_details
 import ebooklib
