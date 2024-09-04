@@ -6,21 +6,19 @@
 {% block ClassBody %} main-page {% endblock %}
 
 {% block main %}
-    <h2>Welcome to Pixel Pages Ebook Library!</h2>
+    <h1 class="welcome">Welcome to Pixel Pages Ebook Library!</h1>
 
-    <p>Discover a world of knowledge and imagination at your fingertips! Our ebook library offers a diverse collection of books across various genres. Whether you're looking for the latest bestsellers, timeless classics, or something entirely new, you're in the right place.</p>
-
+    <h1 class="my-collection">My Collection</h1>
     <div class="book-collection">
-        <h3>Featured Books</h3>
         <div class="books">
             {% for book in books %}
-                <a href="{{ url_for('books.read', book_id=book.id) }}">
-                    <div class="book">
+                <div class="book">
+                    <a href="{{ url_for('books.read', book_id=book.id) }}">
                         <img src="{{ book.thumbnail }}" alt="Book Cover">
-                        <h4>{{ book.title }}</h4>
-                        <p>by {{ book.author }}</p>
-                    </div>
-                </a>
+                        <h4 class="book-info">{{ book.title }}</h4>
+                        <p class="book-info">by {{ book.author }}</p>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     </div>
