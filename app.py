@@ -1,5 +1,5 @@
-from flask import Flask, render_template, session
-from flask_login import LoginManager, login_required
+from flask import Flask, render_template, session, redirect, url_for
+from flask_login import LoginManager
 from dotenv import load_dotenv
 from models import db, User
 from blueprints.auth import auth_bp
@@ -35,15 +35,18 @@ app.register_blueprint(chapters_bp)
 app.register_blueprint(search_bp, url_prefix='/search')
 
 @app.route("/")
-@login_required
 def index():
-    # load all user's books
-    books = User.query.get(session['user_id']).books
+    # check if the user is logged in and if not redirect to the login page
+    if 'user_id' not in session:
+        return redirect(url_for('auth.login'))
+    else:
+        # load all user's books
+        books = User.query.get(session['user_id']).books
 
-    # load all the book information
-    book_info = [{'title': book.title, 'author': book.author, 'thumbnail': book.thumbnail, 'id': book.id} for book in books]
+        # load all the book information
+        book_info = [{'title': book.title, 'author': book.author, 'thumbnail': book.thumbnail, 'id': book.id} for book in books]
 
-    return render_template("index.html", books=book_info)
+        return render_template("index.html", books=book_info)
 
 # Create the database if it doesn't exist
 if not os.path.exists('users.db'):
