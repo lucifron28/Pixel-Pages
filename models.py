@@ -16,3 +16,11 @@ class Book(db.Model):
     file = db.Column(db.String(150), nullable=False) # File path
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Foreign key to User
     thumbnail = db.Column(db.String(150), nullable=False)
+    user_books = db.relationship('User', backref='book', lazy=True)  # Relationship to User
+
+
+class UserBook(db.Model):
+    id = db.Column(db.Integer, primary_key=True) # ID of the user book
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False) # Foreign key to User
+    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False) # Foreign key to Book
+    last_read_chapter = db.Column(db.Integer, nullable=False) # Last read chapter
