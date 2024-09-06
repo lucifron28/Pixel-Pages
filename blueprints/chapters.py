@@ -16,10 +16,9 @@ def chapter(chapter_id):
     reader.load_images(file)
     book = epub.read_epub(f"static/ebooks/{file}")
     chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
-    
     # Check if the chapter id is valid
-    if chapter_id < 0 or chapter_id >= len(chapters):
-        return jsonify({"error": "Chapter not found"}), 404
+    # if chapter_id < 0 or chapter_id >= len(chapters):
+    #     return jsonify({"error": "Chapter not found"}), 404
 
     # Get the content of the chapter
     chapter_content = chapters[chapter_id].get_body_content().decode('utf-8')
