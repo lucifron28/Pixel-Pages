@@ -23,4 +23,4 @@ class UserBook(db.Model):
     id = db.Column(db.Integer, primary_key=True) # ID of the user book
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False) # Foreign key to User
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False) # Foreign key to Book
-    last_read_chapter = db.Column(db.Integer, nullable=False) # Last read chapter
+    last_read_chapter = db.Column(db.Integer, nullable=False, default=0) # Last read chapter

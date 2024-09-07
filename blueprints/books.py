@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from flask_login import login_required, current_user
-from models import db, Book
+from models import db, Book, UserBook
 import os
 from api_service import fetch_book_details
 import ebooklib
@@ -54,12 +54,20 @@ def read(book_id):
     if book is None:
         flash('Book not found.', 'error')
         return redirect(url_for('index'))
+
+    # Get or create the UserBook entry
+    user_book = UserBook.query.filter_by(user_id=current_user.id, book_id=book_id).first()
+    if user_book is None:
+        user_book = UserBook(user_id=current_user.id, book_id=book_id, last_read_chapter=0)
+        db.session.add(user_book)
+        db.session.commit()
+
     file = book.file
     session["file"] = file
     book = epub.read_epub(os.path.join(current_app.config['UPLOAD_FOLDER'], file))
     chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
-    last_read_chapter = session.get('last_read_chapter', 0)
-    print(f"Last read chapter retrieved from session: {last_read_chapter}")
+    last_read_chapter = user_book.last_read_chapter
+    print(f"Last read chapter retrieved from database: {last_read_chapter}")
     return render_template("ebook.html", 
                            chapters=len(chapters), 
                            last_read_chapter=last_read_chapter)
