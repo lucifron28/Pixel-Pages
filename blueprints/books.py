@@ -8,19 +8,14 @@ from ebooklib import epub
 
 books_bp = Blueprint('books', __name__)
 
-@books_bp.route("/browse_books")
+@books_bp.route("/browse_books", methods=['GET', 'POST'])
 @login_required
 def browse_books():
-    if request.method == 'POST':
-        title = request.form.get('title')
-        if title:
-            book_details = fetch_book_details(title)
-            return redirect(url_for('books.browse_books', book_details=book_details))
-        else:
-            print("No title provided.")
-            flash('Please provide a title.', 'error')
-    else:
-        return render_template("browse_books.html")
+    user_books = Book.query.filter_by(user_id=current_user.id).all()
+    # fetch all the books of user and display the all the details of the book
+    book_details = [fetch_book_details(book.title) for book in user_books]
+    return render_template("browse_books.html", books=user_books, details=book_details)
+    
 
 @books_bp.route("/upload", methods=['GET', 'POST'])
 @login_required
