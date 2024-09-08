@@ -3,40 +3,57 @@
 {% block ClassBody %} browse-books-body {% endblock %}
 
 {% block main %}
-	<h2>Browse Books</h2>
+    <h2>Browse Books</h2>
 
-	<p>Explore a wide range of books by searching below. Enter a title or author to discover new reads.</p>
+    <p>Explore a wide range of books by searching below. Enter a title or author to discover new reads.</p>
 
-	<!-- Search Form -->
-	<form id="searchForm" action="{{ url_for('books.browse_books') }}" method="POST" enctype="multipart/form-data">
-		<input type="text" name="searchQuery" id="searchQuery" placeholder="Enter book title or author" required autocomplete="off" >
-		<button type="submit">Search</button>
-		<div id="loading-spinner" style="display:none;">Loading...</div>
-	</form>
+    <!-- Search Form -->
+    <form id="searchForm" action="{{ url_for('books.browse_books') }}" method="GET" enctype="multipart/form-data">
+        <input type="text" name="searchQuery" id="searchQuery" placeholder="Enter book title or author" required autocomplete="off" >
+        <button type="submit">Search</button>
+        <div id="loading-spinner" style="display:none;">Loading...</div>
+    </form>
 
-	<!-- Autocomplete Suggestions -->
-	<div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
+    <!-- Autocomplete Suggestions -->
+    <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
 
-	<!-- Results Section -->
-	<div id="result">
-		<h3>Book Details:</h3>
-		<p id="description"></p>
-		<p id="category"></p>
-		<img id="thumbnail" src="" alt="Book Thumbnail" style="display:none;">
-	</div>
+    <!-- User's Books Section -->
+    <div id="user-books">
+        <h3>Your Books:</h3>
+        {% for detail in details %}
+            <div class="book">
+                <h4>{{ detail.title }}</h4>
+                <p>Author: {{ detail.authors }}</p>
+				<p>Category: {{ detail.category }}</p>
+				<p>Published: {{ detail.published_date }}</p>
+                <img src="{{ detail.thumbnail }}" alt="Book Thumbnail" style="width:100px;height:auto;">
+				<h6>Description:</h6>
+				<p>{{ detail.description }}</p>
+				<button class="view-book" data-id="#">View Book</button>
+            </div>
+        {% endfor %}
+    </div>
 
-	<!-- Book Details Modal -->
-	<div id="bookModal" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<h3 id="modal-title"></h3>
-			<p id="modal-description"></p>
-			<p id="modal-category"></p>
-			<img id="modal-thumbnail" src="" alt="Book Thumbnail">
-		</div>
-	</div>
+    <!-- Results Section -->
+    <div id="result">
+        <h3>Book Details:</h3>
+        <p id="description"></p>
+        <p id="category"></p>
+        <img id="thumbnail" src="" alt="Book Thumbnail" style="display:none;">
+    </div>
+
+    <!-- Book Details Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <p id="modal-category"></p>
+            <img id="modal-thumbnail" src="" alt="Book Thumbnail">
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
-	<script src="{{ url_for('static', filename='browse_books.js') }}"></script>
+    <script src="{{ url_for('static', filename='browse_books.js') }}"></script>
 {% endblock %}
