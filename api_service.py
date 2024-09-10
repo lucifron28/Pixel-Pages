@@ -13,7 +13,7 @@ def fetch_book_details(title, author=None):
         author.replace(' ', '+')
         query = f'intitle:{title}+inauthor:{author}'
     query = f'intitle:{title}'
-    api_url = f'https://www.googleapis.com/books/v1/volumes?q={query}&key={API_KEY}'
+    api_url = f'https://www.googleapis.com/books/v1/volumes?q={query}&langRestrict=en&key={API_KEY}'
     print(api_url)
     response = requests.get(api_url)
     
