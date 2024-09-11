@@ -14,13 +14,13 @@
     </form>
 
     <!-- Autocomplete Suggestions -->
-    <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
+    <div id="autocomplete-suggestions" class="browse-books-autocomplete-suggestions"></div>
 
     <!-- User's Books Section -->
     <div id="user-books">
         <h3>Your Books:</h3>
         {% for detail in details %}
-            <div class="book" data-title="{{ detail.title | lower }}">
+            <div class="book browse-books-book" data-title="{{ detail.title | lower }}"></div>
                 <h4>{{ detail.title }}</h4>
                 <p>Author: {{ detail.authors }}</p>
                 <p>Category: {{ detail.category }}</p>
