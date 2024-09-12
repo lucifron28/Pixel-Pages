@@ -20,7 +20,7 @@
     <div id="user-books">
         <h3>Your Books:</h3>
         {% for detail in details %}
-            <div class="book browse-books-book" data-title="{{ detail.title | lower }}"></div>
+            <div class="book browse-books-book" data-title="{{ detail.title | lower }}" id="{{ detail.id }}"></div>
                 <h4>{{ detail.title }}</h4>
                 <p>Author: {{ detail.authors }}</p>
                 <p>Category: {{ detail.category }}</p>

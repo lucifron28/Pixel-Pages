@@ -28,6 +28,7 @@ def fetch_book_details(title, author=None):
             thumbnail = volume_info.get('imageLinks', {}).get('thumbnail', '')
             description = volume_info.get('description', 'No description available')
             categories = volume_info.get('categories', ['No category available'])
+            id = volume_info.get('id')
 
             return {
                 'title': title,
@@ -35,7 +36,8 @@ def fetch_book_details(title, author=None):
                 'published_date': published_date,
                 'thumbnail': thumbnail,
                 'description': description,
-                'category': categories[0] if categories else 'No category available'
+                'category': categories[0] if categories else 'No category available',
+                "id": id
             }
         else:
             return {'error': 'No books found.'}
