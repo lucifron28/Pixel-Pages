@@ -694,3 +694,12 @@ nav a:active {
     display: block;
     margin: 0 auto;
 }
+
+#user-books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid black;
+}
