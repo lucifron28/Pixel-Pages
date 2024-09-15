@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session, jsonify
 from flask_login import login_required, current_user
 from models import db, Book, UserBook
 import os
@@ -66,3 +66,15 @@ def read(book_id):
     return render_template("ebook.html", 
                            chapters=len(chapters), 
                            last_read_chapter=last_read_chapter)
+
+
+@books_bp.route('/delete/<int:book_id>', methods=['DELETE'])
+@login_required
+def delete_book(book_id):
+    book = Book.query.get(book_id)
+    if book and book.user_id == current_user.id:
+        db.session.delete(book)
+        db.session.commit()
+        flash('Book deleted successfully.', 'success')
+        return jsonify({'success': True}), 200
+    return jsonify({'success': False, 'message': 'Book not found or unauthorized'}), 404

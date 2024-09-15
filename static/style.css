@@ -591,115 +591,56 @@ nav a:active {
     text-shadow: 0 0 10px black;
 }
 
-/* Center the content */
-.browse-books-body {
+.browse-books-book {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-
-/* Add some styling */
-.browse-books-body h2 {
-    color: #fff;
-    text-shadow: 3px 3px black;
-    margin-bottom: 20px;
+    padding: 10px; /* Reduced padding */
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Added margin to reduce gaps */
+    width: 400px; /* Adjust width if needed */
+    background-color: #E5B171;
+    color: black;
 }
 
 .browse-books-body p {
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.browse-books-body form {
-    margin-bottom: 20px;
-}
-
-.browse-books-body input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.8);
     color: black;
-    font-size: 1em;
 }
 
-.browse-books-body button[type="submit"] {
-    width: 150px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #452B0C;
-    color: #fff;
-    font-size: 1em;
+.browse-books-book .description {
+    max-height: 100px; /* Limit the height */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.3s ease; /* Smooth transition */
+    color: black;
+}
+
+.browse-books-book .description::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to top, white, transparent);
+}
+
+.browse-books-book .read-more {
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    color: blue;
+    text-decoration: underline;
+    margin-top: 5px;
 }
 
-.browse-books-body button[type="submit"]:hover {
-    background-color: #ffffff40;
-}
-
-.browse-books-body button[type="submit"]:active {
-    background-color: black;
-}
-
-.browse-books-body #autocomplete-suggestions {
-    color: #fff;
-}
-
-.browse-books-body #result {
-    color: #fff;
-}
-
-.browse-books-body #result h3 {
-    color: #fff;
-    text-shadow: 3px 3px black;
-}
-
-.browse-books-body #result p {
-    color: #fff;
-}
-
-.browse-books-body #result img {
-    max-width: 200px;
-    max-height: 300px;
-    display: block;
-    margin: 0 auto;
-}
-
-.browse-books-body #bookModal {
-    color: #fff;
-}
-
-.browse-books-body #bookModal .modal-content {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-}
-
-.browse-books-body #bookModal .modal-content h3 {
-    color: #fff;
-    text-shadow: 3px 3px black;
-}
-
-.browse-books-body #bookModal .modal-content p {
-    color: #fff;
-}
-
-.browse-books-body #bookModal .modal-content img {
-    max-width: 200px;
-    max-height: 300px;
-    display: block;
-    margin: 0 auto;
-}
-
-#user-books {
+.user-books {
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    border: 2px solid black;
+    align-items: center;
 }

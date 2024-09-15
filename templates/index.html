@@ -18,8 +18,13 @@
                         <h4 class="book-info">{{ book.title }}</h4>
                         <p class="book-info">by {{ book.author }}</p>
                     </a>
+                    <button class="delete-button" data-book-id="{{ book.id }}">delete</button>
                 </div>
             {% endfor %}
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/index.js')}}"></script>
 {% endblock %}
