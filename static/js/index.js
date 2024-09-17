@@ -4,14 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const bookId = this.dataset.bookId;
             const userConfirmed = confirm('Are you sure you want to delete this book?');
             if (userConfirmed) {
-                fetch(`/books/delete/${bookId}`, {
+                fetch(`delete/${bookId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
                         'X-CSRFToken': getCookie('csrf_token') // If CSRF protection is enabled
                     }
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.success) {
                         // Remove the book element from the DOM
@@ -19,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         alert(data.message);
                     }
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
                 });
             }
         });

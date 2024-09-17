@@ -1,6 +1,6 @@
 # Pixel Pages
 
-#### Video Demo: <>
+#### Video Demo: <https://youtu.be/EZHdi7Y-xWQ>
 
 #### Description:
 
@@ -11,10 +11,8 @@ Pixel Pages is an online ebook library application that allows users to read ebo
 * **User Authentication**: Users can register, log in, and log out.
 * **Ebook Reader**: Read and navigate through chapters of EPUB files.
 * **Dynamic Image Handling**: Automatically extract and display images from EPUB files.
-* **Book Search**: Search for books using the Google Books API.
 * **Book Upload**: Authenticated users can upload their own EPUB files.
-
-Please note that some of the features mentioned above are still under development and may not be fully functional at this time.
+* **Book Description**: Fetch the book description from google books api and display the information.
 
 ## Technologies Used
 
@@ -36,20 +34,28 @@ Please note that some of the features mentioned above are still under developmen
 * `blueprints/`: Directory for flask blueprints
 * `blueprints/auth.py`: blueprint for authentication scripts
 * `blueprints/books.py`: blueprint for book rendering
-* `blueprints/chapters.py: blueprint for saving and loading the chapters
+* `blueprints/chapters.py`: blueprint for saving and loading the chapters
+* `instance/users.fb`: database to store books and user information and authentication
 * `app.py`: Main Flask application file.
 * `models.py`: Defines database models (`User`, `Book`, `UserBook`) using SQLAlchemy.
 * `reader.py`: Manages ebook images.
 * `api_service.py`: Fetch book details from Google Books API.
-* `static/ebooks/`: Directory for storing EPUB files.
-* `static/ebook_images/`: Directory for extracted ebook images.
+* `config.py`: for flask configurations.
+* `ebooks/`: Directory for storing EPUB files.
+* `ebook_images/`: Directory for extracted ebook images.
+* `static/style.css`: path for the stylesheet.
 * `static/js/view_ebook.js`: JavaScript file for handling dynamic content.
+* `static/js/index.js`: JavaScript for index and deleting books.
+* `static/js/book_details.js`: JavaScript for loading details of books.
+* `static/img`: directory for images used.
 * `templates/`: Directory for HTML templates.
   * `base.html`: Base template for the application.
   * `index.html`: Home page template.
   * `login.html`: Login page template.
   * `register.html`: Registration page template.
-  * `browse_books.html`: Browse books page template.
+  * `book_details.html`: Book details page template.
+  * `upload.html`: Uploading books page template.
+
 
 ## Setup Instructions
 
