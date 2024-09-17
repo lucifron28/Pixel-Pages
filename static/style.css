@@ -342,6 +342,7 @@ nav a:active {
     width: 500px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 10px;
 }
 
 .upload-form h2 {
@@ -512,13 +513,12 @@ nav a:active {
 
 
 .books {
-    display: flex;
+    display: inline-flex; /* Use inline-flex to allow horizontal scrolling */
     gap: 20px;
-    flex: 1;
     padding: 20px;
     text-align: center;
-    justify-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center; /* Center items vertically */
 }
 
 .book a {
@@ -542,14 +542,13 @@ nav a:active {
     width: 70%;
     margin-right: auto;
     margin-left: auto;
-    overflow-x: auto;
-    flex-wrap: wrap;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of children */
     position: relative;
     border-radius: 15px;
-
-    /* Added properties for centering content */
-    justify-content: center; /* Centers flex items horizontally */
-    align-items: center; /* Centers flex items vertically (if the height is sufficient) */
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center; /* Center items vertically */
+    padding-left: 10px; /* Add padding to ensure the first book is not cut off */
 }
 
 .my-collection {
@@ -578,6 +577,8 @@ nav a:active {
 
 .book {
     width: 200px;
+    height: 350px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -585,6 +586,15 @@ nav a:active {
     border: 2px solid black;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-info {
+    width: 100%; /* Ensure the title takes the full width of its container */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Display ellipsis (...) for overflow text */
+    white-space: normal; /* Allow text to wrap to the next line */
+    text-align: center; /* Center the text */
+    word-wrap: break-word; /* Break long words to fit within the container */
 }
 
 .welcome {
@@ -650,6 +660,7 @@ nav a:active {
     background-color: #452B0C;
     color: #fff;
     border-radius: 5px;
+    margin-top: auto;
 }
 
 .delete-button:hover {

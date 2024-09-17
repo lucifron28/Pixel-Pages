@@ -5,13 +5,13 @@ from ebooklib import epub
 
 def load_images(book_file):
     # Define the directory to save images
-    IMAGES_DIR = 'static/ebook_images'
+    IMAGES_DIR = 'ebook_images'
 
     # Create the directory if it doesn't exist
     os.makedirs(IMAGES_DIR, exist_ok=True)
 
     # Load the EPUB book
-    book = epub.read_epub(f"static/ebooks/{book_file}")
+    book = epub.read_epub(f"ebooks/{book_file}")
 
     # Save images from the book
     for item in book.get_items_of_type(ebooklib.ITEM_IMAGE):

@@ -15,7 +15,7 @@ def chapter(chapter_id):
     # Load the eBook and get the list of chapters
     file = session.get("file")
     reader.load_images(file)
-    book = epub.read_epub(f"static/ebooks/{file}")
+    book = epub.read_epub(f"ebooks/{file}")
     chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
 
     # Check if the chapter id is valid
@@ -29,7 +29,7 @@ def chapter(chapter_id):
     soup = BeautifulSoup(chapter_content, 'html.parser')
     for img in soup.find_all('img'):
         img_src = img['src'].split('/')[-1]  # Get the image filename
-        img['src'] = f"/static/ebook_images/{img_src}"
+        img['src'] = f"/ebook_images/{img_src}"
 
     # Save the last read chapter in the database
     book = Book.query.filter_by(file=file).first()

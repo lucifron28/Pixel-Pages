@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session, jsonify
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session, jsonify, send_from_directory
 from flask_login import login_required, current_user
 from models import db, Book, UserBook
 import os
@@ -8,13 +8,18 @@ from ebooklib import epub
 
 books_bp = Blueprint('books', __name__)
 
-@books_bp.route("/browse_books", methods=['GET', 'POST'])
+@books_bp.route('/ebook_images/<path:filename>')
 @login_required
-def browse_books():
+def ebook_images(filename):
+    return send_from_directory('ebook_images', filename)
+
+@books_bp.route("/books_details", methods=['GET', 'POST'])
+@login_required
+def book_details():
     user_books = Book.query.filter_by(user_id=current_user.id).all()
     # fetch all the books of user and display the all the details of the book
     book_details = [fetch_book_details(book.title) for book in user_books]
-    return render_template("browse_books.html", books=user_books, details=book_details)
+    return render_template("book_details.html", books=user_books, details=book_details)
     
 
 @books_bp.route("/upload", methods=['GET', 'POST'])

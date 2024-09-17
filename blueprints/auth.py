@@ -24,7 +24,7 @@ def login():
 @auth_bp.route("/logout")
 @login_required
 def logout():
-    images_dir = 'static/ebook_images'
+    images_dir = 'ebook_images'
     if os.path.exists(images_dir):
         shutil.rmtree(images_dir)
         os.makedirs(images_dir)

@@ -5,7 +5,6 @@ from models import db, User
 from blueprints.auth import auth_bp
 from blueprints.books import books_bp
 from blueprints.chapters import chapters_bp
-from blueprints.search import search_bp
 import os
 from config import Config
 
@@ -30,9 +29,9 @@ def create_tables():
 
 # Register Blueprints
 app.register_blueprint(auth_bp, url_prefix='/auth')
-app.register_blueprint(books_bp, url_prefix='/books')
+app.register_blueprint(books_bp)
 app.register_blueprint(chapters_bp)
-app.register_blueprint(search_bp, url_prefix='/search')
+
 
 @app.route("/")
 def index():

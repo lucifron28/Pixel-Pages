@@ -1,11 +1,8 @@
 /__pycache__
 /env
 /instance/users.db
-/static/ebook_images/
 .idea/
 .env
 test.html
 testread.py
 blueprints/__pycache__/
-static/ebook_images/
-static/ebooks/
