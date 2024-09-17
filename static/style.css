@@ -644,3 +644,16 @@ nav a:active {
     justify-content: center;
     align-items: center;
 }
+
+.delete-button {
+    padding:5px;
+    background-color: #452B0C;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: #ffffff40;
+    color: black;
+    cursor: pointer;
+}
