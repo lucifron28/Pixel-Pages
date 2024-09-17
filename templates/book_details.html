@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %} Book Details {% endblock %}
 {% block ClassBody %} browse-books-body {% endblock %}
 
 {% block main %}
-    <h2>Book Details</h2>
+    <h2 class="bdh2">Book Details</h2>
     <!-- Search Form -->
     <form id="searchForm" action="#" method="GET" enctype="multipart/form-data">
         <input type="text" name="searchQuery" id="searchQuery" placeholder="Enter book title or author" required autocomplete="off">
