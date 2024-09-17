@@ -1,15 +1,18 @@
 # Pixel Pages
 
+#### Video Demo: <>
+
+#### Description:
+
 Pixel Pages is an online ebook library application that allows users to read ebooks, navigate through chapters, and manage their own ebook uploads. It aims to provide a seamless reading experience with features like navigation, image handling, and book search.
 
-## Current Features
+## Features
 
 * **User Authentication**: Users can register, log in, and log out.
 * **Ebook Reader**: Read and navigate through chapters of EPUB files.
-* **Dynamic Image Handling**: Automatically extract and display images from EPUB files. (Work in progress)
-* **Book Search**: Search for books using the Google Books API. (Work in progress)
-* **Book Upload**: Authenticated users can upload their own EPUB files. (Work in progress)
-* **Categories**: Browse books by categories. (Work in progress)
+* **Dynamic Image Handling**: Automatically extract and display images from EPUB files.
+* **Book Search**: Search for books using the Google Books API.
+* **Book Upload**: Authenticated users can upload their own EPUB files.
 
 Please note that some of the features mentioned above are still under development and may not be fully functional at this time.
 
@@ -30,8 +33,13 @@ Please note that some of the features mentioned above are still under developmen
 
 ## Project Structure
 
-* `app.py`: Main Flask application file (routes & logic).
-* `reader.py`: Functionality for loading and managing ebook images.
+* `blueprints/`: Directory for flask blueprints
+* `blueprints/auth.py`: blueprint for authentication scripts
+* `blueprints/books.py`: blueprint for book rendering
+* `blueprints/chapters.py: blueprint for saving and loading the chapters
+* `app.py`: Main Flask application file.
+* `models.py`: Defines database models (`User`, `Book`, `UserBook`) using SQLAlchemy.
+* `reader.py`: Manages ebook images.
 * `api_service.py`: Fetch book details from Google Books API.
 * `static/ebooks/`: Directory for storing EPUB files.
 * `static/ebook_images/`: Directory for extracted ebook images.
