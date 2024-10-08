@@ -8,3 +8,4 @@ testread.py
 blueprints/__pycache__/
 ebook_images/*
 ebooks/*
+.vercel
