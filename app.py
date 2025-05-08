@@ -32,7 +32,6 @@ app.register_blueprint(auth_bp, url_prefix='/auth')
 app.register_blueprint(books_bp)
 app.register_blueprint(chapters_bp)
 
-
 @app.route("/")
 def index():
     # check if the user is logged in and if not redirect to the login page
@@ -48,10 +47,13 @@ def index():
         return render_template("index.html", books=book_info)
 
 # Create the database if it doesn't exist
-if not os.path.exists('users.db'):
+if not os.path.exists(os.path.join(app.config['BASE_DIR'], 'users.db')):
     with app.app_context():
         db.create_all()
         print("Database created!")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Use environment variables for host and port
+    host = os.getenv('HOST', '0.0.0.0')
+    port = int(os.getenv('PORT', 5000))
+    app.run(host=host, port=port)
